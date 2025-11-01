@@ -6,7 +6,9 @@ export class LlmService implements OnModuleInit {
     private ai: GoogleGenAI;
 
     constructor(){
-        this.ai = new GoogleGenAI({});
+        const apiKey = process.env.GEMINI_API_KEY;
+        console.log('API Key loaded:', apiKey ? 'Yes' : 'No');
+        this.ai = new GoogleGenAI({ apiKey });
     }
 
     async onModuleInit() {
